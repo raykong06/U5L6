@@ -9,15 +9,29 @@ public class BankApp {
     boolean saleOn;
     int originalBagelPrice;
 
-    public BankApp(BagelShop shop, Bank bank, CreditCard card)
+    public BankApp()
     {
-        this.shop = shop;
-        this.bank = bank;
-        this.card1 = card;
-        defaultCard = card;
+        shop = null;
+        bank = new Bank();
+        card1 = null;
+        defaultCard = null;
         card2 = null;
         saleOn = false;
-        originalBagelPrice = shop.getBagelPrice();
+        originalBagelPrice = 0;
+    }
+
+    public String setShop(String name, int inventory, int bagelPrice)
+    {
+        shop = new BagelShop(name, inventory, bagelPrice, bank);
+        originalBagelPrice = bagelPrice;
+
+        return "You successfully set up your bagel shop!";
+    }
+
+    public String setCard1(String name, String personalPIN)
+    {
+        card1 = new CreditCard(name, personalPIN);
+        return "You successfully set up your first credit card!";
     }
 
     // Customer Actions
@@ -203,7 +217,7 @@ public class BankApp {
                 "C: Check Undeposited Profit" +
                 "D: Make a Sale for Customers\n" +
                 "E: End Sale\n";
-        
+
         return str;
     }
 }
