@@ -8,6 +8,7 @@ public class BankApp {
     CreditCard defaultCard;
     boolean saleOn;
     int originalBagelPrice;
+    String message;
 
     public BankApp()
     {
@@ -18,6 +19,7 @@ public class BankApp {
         card2 = null;
         saleOn = false;
         originalBagelPrice = 0;
+        message = "";
     }
 
     public String setShop(String name, int inventory, int bagelPrice)
@@ -31,6 +33,7 @@ public class BankApp {
     public String setCard1(String name, String personalPIN)
     {
         card1 = new CreditCard(name, personalPIN);
+        defaultCard = card1;
         return "You successfully set up your first credit card!";
     }
 
@@ -69,11 +72,11 @@ public class BankApp {
         }
     }
 
-    public String creditCardPayment(CreditCard card, int payment)
+    public String creditCardPayment(int payment)
     {
-        bank.makePayment(card, payment);
-        String str = "You made a payment of $" + payment + "! \n";
-        if (card.getBalanceOwed() > bank.getHIGH_BALANCE_AMT())
+        bank.makePayment(defaultCard, payment);
+        String str = "You made a payment of $" + payment + " to your default card! \n";
+        if (defaultCard.getBalanceOwed() > bank.getHIGH_BALANCE_AMT())
         {
             str += "Since your balance was above the high balance amount, you were charged a $" + bank.getHIGH_BALANCE_AMT() + " fee.\n";
         }
@@ -206,17 +209,20 @@ public class BankApp {
     {
         String str = "MAIN MENU:\n" +
                 "Customer Actions:" +
-                "1: Visit the Bagel Shop\n" +
-                "2: Make a Credit Card Payment\n" +
-                "3: Pick Default Credit Card\n" +
-                "4: Compare Credit Card Balances\n" +
+                "1: Buy Bagels\n" +
+                "2: Return Bagels" +
+                "3: Make a Credit Card Payment\n" +
+                "4: Pick Default Credit Card\n" +
+                "5: Compare Credit Card Balances\n" +
                 "\n" +
                 "Bagel Shop Owner Actions:\n" +
                 "A: Deposit Profits to Bank\n" +
                 "B: Check Inventory\n" +
                 "C: Check Undeposited Profit" +
                 "D: Make a Sale for Customers\n" +
-                "E: End Sale\n";
+                "E: End Sale\n" +
+                "\n" +
+                "X: Exit Program\n";
 
         return str;
     }
