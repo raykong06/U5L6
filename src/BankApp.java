@@ -208,7 +208,7 @@ public class BankApp {
     public String toString()
     {
         String str = "MAIN MENU:\n" +
-                "Customer Actions:" +
+                "Customer Actions:\n" +
                 "1: Buy Bagels\n" +
                 "2: Return Bagels" +
                 "3: Make a Credit Card Payment\n" +
