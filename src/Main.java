@@ -33,8 +33,8 @@ public class Main
             choice = "0";
             message = app.toString();
             System.out.println("\n" + message +"\n\n");
-            while (!choice.equals("1") || !choice.equals("2") || !choice.equals("3") || !choice.equals("4") || !choice.equals("5")
-            || !choice.equals("A") || !choice.equals("B") || !choice.equals("C") || !choice.equals("D") || !choice.equals("E"))
+            while (!choice.equals("1") && !choice.equals("2") && !choice.equals("3") && !choice.equals("4") && !choice.equals("5")
+                    && !choice.equals("A") && !choice.equals("B") && !choice.equals("C") && !choice.equals("D") && !choice.equals("E"))
             {
                 System.out.print("Please select your choice: ");
                 choice = s.nextLine();
